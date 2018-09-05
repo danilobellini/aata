@@ -1,0 +1,1002 @@
+\documentclass{article}[10pt]
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath} % \operatorname
+\usepackage{amssymb} % \blacksquare
+\usepackage{dsfont} % \mathds
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage[a4paper, margin=2cm, bottom=3cm]{geometry}
+\usepackage{cancel}
+
+\setlength{\parindent}{0cm} % Don't indent
+\everymath{\displaystyle}
+
+\newenvironment{exercise}[1]
+    {\noindent\rule{2cm}{0.4pt} \\
+     \textbf{#1.}}
+    {}
+
+\newcommand{\answer}{
+
+  \underline{Answer}
+
+}
+
+\newcommand{\qed}{
+
+\hfill\ensuremath{\blacksquare}
+
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large Thomas W. Judson's
+          Abstract Algebra~--- Theory and Applications} \\
+  {\large Exercise solutions by Danilo J. S. Bellini} \\
+\end{center}
+
+
+\setcounter{section}{1}\setcounter{subsection}{2}
+\subsection{Exercises}
+
+
+\begin{exercise}{1}
+  Suppose that
+  \[
+    \begin{array}{>{\displaystyle}r
+                  >{\displaystyle}c
+                  >{\displaystyle}l}
+      A & = & \left\{ x : x \in \mathds{N} \operatorname{and}
+                          x \;\text{is even} \right\}, \\
+      B & = & \left\{ x : x \in \mathds{N} \operatorname{and}
+                          x \;\text{is prime} \right\}, \\
+      C & = & \left\{ x : x \in \mathds{N} \operatorname{and}
+                          x \;\text{is a multiple of}\; 5 \right\}. \\
+    \end{array}
+  \]
+  Describe each of the following sets.
+  \begin{enumerate}[(a)]
+    \item $A \cap B$
+    \item $B \cap C$
+    \item $A \cup B$
+    \item $A \cap \left( B \cup C \right)$
+  \end{enumerate}
+
+  \answer
+  \begin{enumerate}[(a)]
+    \item $A \cap B = \left\{ 2 \right\}$
+    \item $B \cap C = \left\{ 5 \right\}$
+    \item $\begin{array}{rcl}
+      A \cup B
+      & = & \left\{ x : x \in \mathds{N} \operatorname{and}
+                        x \;\text{is even or prime} \right\} \\
+      & = & \mathds{N} \setminus
+            \left\{ x : x \;\text{is odd} \operatorname{and}
+                        x \;\text{isn't prime} \right\} \\
+    \end{array}$
+    \item $\begin{array}{rcl}
+      A \cap \left( B \cup C \right)
+      & = & \left( A \cap B \cup \right) \left( A \cap C \right) \\
+      & = & \left\{ 2 \right\} \cup
+            \left\{ x : x \in \mathds{N} \operatorname{and}
+                        x \;\text{is a multiple of both}\; 2
+                         \;\text{and}\; 5 \right\} \\
+      & = & \left\{ x : x \in \mathds{N} \operatorname{and}
+                        x \;\text{is either}\; 2
+                          \;\text{or a multiple of}\; 10 \right\} \\
+    \end{array}$
+  \end{enumerate}
+
+\end{exercise}
+
+
+\begin{exercise}{2}
+  If $A = \left\{ a, b, c \right\}$,
+     $B = \left\{ 1, 2, 3 \right\}$,
+     $C = \left\{ x \right\}$, and
+     $D = \emptyset$,
+  list all of the elements in each of the following sets.
+  \begin{enumerate}[(a)]
+    \item $A \times B$
+    \item $B \times A$
+    \item $A \times B \times C$
+    \item $A \times D$
+  \end{enumerate}
+
+  \answer
+  \begin{enumerate}[(a)]
+    \item $A \times B =
+           \left\{(a, 1), (a, 2), (a, 3),
+                  (b, 1), (b, 2), (b, 3),
+                  (c, 1), (c, 2), (c, 3)\right\}$
+    \item $B \times A =
+           \left\{(1, a), (1, b), (1, c),
+                  (2, a), (2, b), (2, c),
+                  (3, a), (3, b), (3, c)\right\}$
+    \item $A \times B \times C =
+           \left\{(a, 1, x), (a, 2, x), (a, 3, x),
+                  (b, 1, x), (b, 2, x), (b, 3, x),
+                  (c, 1, x), (c, 2, x), (c, 3, x)\right\}$
+    \item $\emptyset$
+  \end{enumerate}
+
+\end{exercise}
+
+
+\begin{exercise}{3}
+  Find an example of two nonempty sets $A$ and $B$ for which
+  $A \times B = B \times A$ is true.
+  \answer
+  $A$ and $B$ should be the same,
+  else the pairs $(a, b) \in A \times B$
+  could never match the pairs $(b, a) \in B \times A$
+  (i.e., we must have
+   $\forall_{b \in B} \; b \in A$, and
+   $\forall_{a \in A} \; a \in B$
+   in order to have $(b, a) \in A \times B$
+   for all $(b, a) \in B \times A$).
+  As a constructive example, let $A = B = \left\{1\right\}$,
+  so $A \times B = B \times A = \left\{(1, 1)\right\}$.
+  It's worth noting that if $A \ne B$
+  either $A$ or $B$ should be the empty set:
+  let $b \in B$ but $b \notin A$,
+  if $a \in A$, then $a \ne b$ and $(b, a) \in B \times A$,
+  however $(b, a) \notin A \times B$,
+  therefore $B \times A \ne A \times B$.
+  As the empty set wouldn't be a solution,
+  the only solution is $A = B$ for every nonempty set $A$.
+\end{exercise}
+
+
+\begin{exercise}{4}
+  Prove $A \cup \emptyset = A$ and $A \cap \emptyset = \emptyset$.
+  \answer
+  Knowing that the logical $\lor$/$\land$ operators
+  (respectively \emph{or/and}) satisfy:
+  \begin{itemize}
+    \item $p \operatorname{or} \text{False} = p \lor \text{False} = p$
+    \item $p \operatorname{and} \text{False} = p \land \text{False}
+                                             = \text{False}$
+  \end{itemize}
+
+  We can straightly apply the definition of union and intersection:
+  \[
+    A \cup \emptyset
+    = \left\{ x : x \in A \operatorname{or}
+                  \overbrace{\cancel{x \in \emptyset}}^{\text{False}}
+      \right\}
+    = \left\{ x : x \in A \right\}
+    = A
+  \]
+  \[
+    A \cap \emptyset
+    = \left\{ x : x \in A \operatorname{and}
+                  \overbrace{\cancel{x \in \emptyset}}^{\text{False}}
+      \right\}
+    = \left\{ x : False\right\}
+    = \emptyset
+  \]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{5}
+  Prove $A \cup B = B \cup A$ and $A \cap B = B \cap A$.
+  \answer
+  Since the logical \emph{or/and} operators are commutative,
+  \[
+    A \cup B
+    = \left\{ x : x \in A \operatorname{or} x \in B\right\}
+    = \left\{ x : x \in B \operatorname{or} x \in A\right\}
+    = B \cup A
+  \]
+  \[
+    A \cap B
+    = \left\{ x : x \in A \operatorname{and} x \in B\right\}
+    = \left\{ x : x \in B \operatorname{and} x \in A\right\}
+    = B \cap A
+  \]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{6}
+  Prove $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+  \answer
+  \[\begin{array}{rcl}
+    A \cup (B \cap C)
+    &=& \left\{ x : x \in A \lor x \in (B \cap C) \right\} \\
+    &=& \left\{ x : x \in A \lor
+                    x \in \left\{ y : y \in B \land y \in C \right\}
+        \right\} \\
+    &=& \left\{ x : x \in A \lor
+                    \left( x \in B \land x \in C \right)
+        \right\} \\
+    &=& \left\{ x : \left( x \in A \lor x \in B \right) \land
+                    \left( x \in A \lor x \in C \right)
+        \right\} \\
+    &=& \left\{ x : x \in \left\{ y : y \in A \lor y \in B \right\}
+                    \land
+                    x \in \left\{ y : y \in A \lor y \in C \right\}
+        \right\} \\
+    &=& \left\{ x : x \in (A \cup B) \land x \in(A \cup C) \right\} \\
+    &=& (A \cup B) \cap (A \cup C) \\
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{7}
+  Prove $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+  \[\begin{array}{rcl}
+    A \cap (B \cup C)
+    &=& \left\{ x : x \in A \land x \in (B \cup C) \right\} \\
+    &=& \left\{ x : x \in A \land
+                    x \in \left\{ y : y \in B \lor y \in C \right\}
+        \right\} \\
+    &=& \left\{ x : x \in A \land
+                    \left( x \in B \lor x \in C \right)
+        \right\} \\
+    &=& \left\{ x : \left( x \in A \land x \in B \right) \lor
+                    \left( x \in A \land x \in C \right)
+        \right\} \\
+    &=& \left\{ x : x \in \left\{ y : y \in A \land y \in B \right\}
+                    \lor
+                    x \in \left\{ y : y \in A \land y \in C \right\}
+        \right\} \\
+    &=& \left\{ x : x \in (A \cap B) \lor x \in(A \cap C) \right\} \\
+    &=& (A \cap B) \cup (A \cap C) \\
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{8}
+  Prove $A \subset B$ if and only if $A \cap B = A$.
+  \answer
+  Let $A \subset B$, then $\forall_{a \in A} \; a \in B$,
+  i.e., $(a \in A) \implies (a \in B)$.
+  With that assumption, we can say,
+  by absorption (conjunction introduction),
+  that $(a \in A) \implies (a \in A) \land (a \in B)$,
+  whereas, by simplification (conjunction elimination),
+  we always have $(a \in A) \land (a \in B) \implies (a \in A)$.
+  We can join these statements into a single one:
+  $(a \in A) \iff (a \in A) \land (a \in B)$.
+  Finally:
+  \[
+    A \cap B
+    = \left\{ x : x \in A \land x \in B \right\}
+    = \left\{ x : x \in A \right\}
+    = A
+  \]
+  On the other hand, let $A \cap B = A$.
+  That's to say that $(x \in A) \land (x \in B) \iff (x \in A)$,
+  which entails $(x \in A) \implies (x \in A) \land (x \in B)$,
+  whose right hand side can be simplified (by conjuntion elimination),
+  yielding $(x \in A) \implies (x \in B)$.
+  But that can be written as $\forall_{x \in A} \; x \in B$,
+  i.e., $A \subset B$.
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{9}
+  Prove $(A \cap B)' = A' \cup B'$.
+  \answer
+  This De Morgan's law regarding sets can be proved
+  from a De Morgan's law regarding logical propositions.
+  The De Morgan's laws in logic, are:
+  \begin{enumerate}[(1)]
+    \item $\lnot p \lor \lnot q = \lnot (p \land q)$
+    \item $\lnot p \land \lnot q = \lnot (p \lor q)$
+  \end{enumerate}
+  Truth table (accordingly to classical logic)
+  including both sides of the above tautologies:
+  \begin{center}
+    \begin{tabular}{rcccc}
+      $p$                     & False & False & True  & True  \\
+      $q$                     & False & True  & False & True  \\
+      $p \land q$             & False & False & False & True  \\
+      $p \lor q$              & False & True  & True  & True  \\
+      $\lnot p$               & True  & True  & False & False \\
+      $\lnot q$               & True  & False & True  & False \\
+      $\lnot p \lor \lnot q$  & True  & True  & True  & False \\
+      $\lnot (p \land q)$     & True  & True  & True  & False \\
+      $\lnot p \land \lnot q$ & True  & False & False & False \\
+      $\lnot (p \lor q)$      & True  & False & False & False \\
+    \end{tabular}
+  \end{center}
+  Then, for some universal set $X$
+  satisfying $A \subset X$ and $B \subset X$
+  from which we can define the complement of a set:
+  \[\begin{array}{rcl}
+    A' \cup B'
+    &=& \left\{ x : x \in A' \lor x \in B' \right\} \\
+    &=& \left\{ x : (x \in X \land x \notin A) \lor
+                    (x \in X \land x \notin B)
+        \right\} \\
+    &=& \left\{ x : x \in X \land
+                    (x \notin A \lor x \notin B)
+        \right\} \\
+    &=& \left\{ x : x \in X \land
+                    \left[ \lnot (x \in A) \lor \lnot (x \in B) \right]
+        \right\} \\
+    &\stackrel{\text{(1)}}{=}&
+        \left\{ x : x \in X \land
+                    \lnot \left[ x \in A \land x \in B \right]
+        \right\} \\
+    &=& \left\{ x : x \in X \land
+                    \lnot (x \in A \cap B)
+        \right\} \\
+    &=& (A \cap B)'
+  \end{array}\]
+  \qed
+
+  Another approach to prove this would be to split the equalness
+  in two parts:
+  \begin{itemize}
+    \item $(A \cap B)' \subset A' \cup B'$ \\
+      Let $x \in (A \cap B)'$, so $x \in X$ but $x \notin A \cap B$.
+      Suppose $x \in A$, then $x \notin B$, since $x \notin A \cap B$.
+      Conversely, if $x \notin A$, the $x \notin A \cap B$
+      restriction is already satisfied.
+      Therefore, either $x \notin B$ or $x \notin A$,
+      which can be stated as $x \in A' \lor x\in B'$,
+      i.e., $x \in A' \cup B'$.
+      Therefore, $(A \cap B)' \subset A' \cup B'$.
+    \item $A' \cup B' \subset (A \cap B)'$ \\
+      Let $x \in A'$, so $x \in X$ but $x \notin A$.
+      Since $A \cap B \subset A$,
+      it's worth noting that $x \notin A \cap B$
+      (if a value isn't in a set, it can't be in its subset).
+      Then we have $x \in (A \cap B)'$.
+      Likewise, let $y \in B'$,
+      then due to the symmetry we can say that $y \in (A \cap B)'$.
+      Then for any value in either $A'$ or $B'$,
+      we know it's also in $(A \cap B)'$.
+      That's to say $A' \cup B' \subset (A \cap B)'$.
+  \end{itemize}
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{10}
+  Prove $A \cup B = (A \cap B) \cup (A \setminus B)
+                               \cup (B \setminus A)$.
+  \answer
+  For some universal set $X$,
+  required in order to define set complements,
+  we have:
+  \[\begin{array}{rclr}
+    (A \cap B) \cup (A \setminus B) \cup (B \setminus A)
+    &=& \left[ (A \cap B) \cup (A \cap B) \right] \cup
+        (A \setminus B) \cup (B \setminus A)
+      & \text{(duplication)} \\
+    &=& (A \cap B) \cup \left[ (A \cap B) \cup
+        (A \setminus B) \right] \cup (B \setminus A)
+      & \text{(associative)} \\
+    &=& \left[ (A \cap B) \cup (A \setminus B) \right] \cup
+        (A \cap B) \cup (B \setminus A)
+      & \text{(commutative)} \\
+    &=& \left[ (A \cap B) \cup (A \setminus B) \right] \cup
+        \left[ (B \cap A) \cup (B \setminus A) \right]
+      & \text{(associative + commutative)} \\
+    &=& \left[ (A \cap B) \cup (A \cap B') \right] \cup
+        \left[ (B \cap A) \cup (B \cap A') \right]
+      & \text{(difference definition)} \\
+    &=& \left[ A \cap (B \cup B') \right] \cup
+        \left[ B \cap (A \cup A') \right]
+      & \text{(distributive)} \\
+    &=& \left[ A \cap X \right] \cup
+        \left[ B \cap X \right] \\
+    &=& \left[ A \right] \cup \left[ B \right] \\
+    &=& A \cup B
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{11}
+  Prove $(A \cup B) \times C = (A \times C) \cup (B \times C)$.
+  \answer
+  It follows from the distributive property
+  $(p \lor q) \land r = (p \land r) \lor (q \land r)$
+  of the \emph{or/and} operators.
+  \[\begin{array}{rcl}
+    (A \cup B) \times C
+    &=& \left\{ (x, y) : x \in A \cup B \land y \in C \right\} \\
+    &=& \left\{ (x, y) : x \in \left\{ z : z \in A \lor z \in B
+                               \right\} \land y \in C
+        \right\} \\
+    &=& \left\{ (x, y) : (x \in A \lor x \in B) \land y \in C
+        \right\} \\
+    &=& \left\{ (x, y) : (x \in A \land y \in C) \lor
+                         (x \in B \land y \in C)
+        \right\} \\
+    &=& \left\{ (x, y) : x \in A \land y \in C \right\} \cup
+        \left\{ (x, y) : x \in B \land y \in C \right\} \\
+    &=& (A \times C) \cup (B \times C)
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{12}
+  Prove $(A \cap B) \setminus B = \emptyset$.
+  \answer
+  \[
+    (A \cap B) \setminus B
+    = (A \cap B) \cap B'
+    = A \cap (B \cap B')
+    = A \cap \emptyset
+    = \emptyset
+  \]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{13}
+  Prove $(A \cup B) \setminus B = A \setminus B$.
+  \answer
+  \[
+    (A \cup B) \setminus B
+    = (A \cup B) \cap B'
+    = (A \cap B') \cup (B \cap B')
+    = (A \cap B') \cup \emptyset
+    = A \cap B'
+    = A \setminus B
+  \]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{14}
+  Prove $A \setminus (B \cup C) = (A \setminus B) \cap
+                                  (A \setminus C)$.
+  \answer
+  \[\begin{array}{rcl}
+    A \setminus (B \cup C)
+    &=& A \cap (B \cup C)' \\
+    &=& A \cap (B' \cap C') \\
+    &=& (A \cap A) \cap (B' \cap C') \\
+    &=& A \cap (A \cap B') \cap C' \\
+    &=& (A \cap B') \cap A \cap C' \\
+    &=& (A \setminus B) \cap (A \setminus C) \\
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{15}
+  Prove $A \cap (B \setminus C) = (A \cap B) \setminus (A \cap C)$.
+  \answer
+  \[\begin{array}{rcl}
+    (A \cap B) \setminus (A \cap C)
+    &=& (A \cap B) \cap (A \cap C)' \\
+    &=& (A \cap B) \cap (A' \cup C') \\
+    &=& \left[ (A \cap A) \cap B \right] \cap (A' \cup C') \\
+    &=& \left[ A \cap (A \cap B) \right] \cap (A' \cup C') \\
+    &=& \left[ (A \cap B) \cap A \right] \cap (A' \cup C') \\
+    &=& (A \cap B) \cap \left[ A \cap (A' \cup C') \right] \\
+    &=& (A \cap B) \cap \left[ (A \cap A') \cup (A \cap C') \right] \\
+    &=& (A \cap B) \cap \left[ \emptyset \cup (A \cap C') \right] \\
+    &=& (A \cap B) \cap (A \cap C') \\
+    &=& A \cap (B \cap A) \cap C' \\
+    &=& A \cap (A \cap B) \cap C' \\
+    &=& (A \cap A) \cap B \cap C' \\
+    &=& A \cap B \cap C' \\
+    &=& A \cap (B \setminus C) \\
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{16}
+  Prove $(A \setminus B) \cup (B \setminus A) =
+         (A \cup B) \setminus (A \cap B)$.
+  \answer
+  Let $X$ be the universal set, then:
+  \[\begin{array}{rcl}
+    (A \setminus B) \cup (B \setminus A)
+    &=& (A \cap B') \cup (B \cap A') \\
+    &=& \left[ (A \cap B') \cup B \right] \cap
+        \left[ (A \cap B') \cup A' \right] \\
+    &=& \left[ (A \cup B) \cap (B' \cup B) \right] \cap
+        \left[ (A \cup A') \cap (B' \cup A') \right] \\
+    &=& \left[ (A \cup B) \cap X \right] \cap
+        \left[ X \cap (B' \cup A') \right] \\
+    &=& \left[ (A \cup B) \right] \cap
+        \left[ (B' \cup A') \right] \\
+    &=& (A \cup B) \cap (A' \cup B') \\
+    &=& (A \cup B) \cap (A \cap B)' \\
+    &=& (A \cup B) \setminus (A \cap B) \\
+  \end{array}\]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{17}
+  Which of the following relations $f : \mathds{Q} \to \mathds{Q}$
+  define a mapping?
+  In each case, supply a reason why $f$ is or is not a mapping.
+  \begin{enumerate}[(a)]
+    \item $f(p/q) = \frac{p+1}{p-2}$
+    \item $f(p/q) = \frac{3p}{3q}$
+    \item $f(p/q) = \frac{p+q}{q^2}$
+    \item $f(p/q) = \frac{3p^2}{7q^2} - \frac{p}{q}$
+  \end{enumerate}
+  \answer
+  \begin{enumerate}[(a)]
+    \item
+      It's not a mapping, since we have $f(1/2) = -2$,
+      $f(2/4)$ doesn't exist, and $f(3/6) = 4$.
+      As $1/2 = 2/4 = 3/6$, we're dealing with a single number,
+      and this input would have had been mapped to a single outcome
+      if $f$ were a mapping.
+    \item
+      It's $f(x) = 3x$, which happens to be a mapping,
+      since it maps every single input $x \in \mathds{Q}$
+      to a single outcome in $\mathds{Q}$.
+    \item $f(p/q) = \frac{p+q}{q^2}$
+      It's not a mapping, since we have $f(1/2) = 3/4$,
+      and $f(2/4) = 6/16 = 3/8 \ne 3/4$,
+      that is,
+      it's a relation where a single input from $\mathds{Q}$
+      yields distinct outcomes from $\mathds{Q}$
+      depending on the fractional representation of the input.
+    \item
+      We can write it as $f(x) = \frac{3}{7}x^2 - x$,
+      which maps every single input $x \in \mathds{Q}$
+      to a single outcome in $\mathds{Q}$.
+      That relation is a mapping.
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{18}
+  Determine which of the following functions are one-to-one
+  and which are onto.
+  If the function is not onto, determine its range.
+  \begin{enumerate}[(a)]
+    \item $f : \mathds{R} \to \mathds{R}$ defined by $f(x) = e^x$
+    \item $f : \mathds{Z} \to \mathds{Z}$ defined by $f(n) = n^2 + 3$
+    \item $f : \mathds{R} \to \mathds{R}$ defined by $f(x) = \sin x$
+    \item $f : \mathds{Z} \to \mathds{Z}$ defined by $f(x) = x^2$
+  \end{enumerate}
+  \answer
+  The \emph{codomains} are always given,
+  and the word ``\emph{range}'' in this book
+  always stands for the \emph{image} of a mapping.
+  I'm assuming $0 \in \mathds{N}$
+  and $\mathds{N}^* = \mathds{N} \setminus \{0\}$.
+  None of these functions is surjective/onto,
+  their \emph{ranges/images} are:
+  \begin{enumerate}[(a)]
+    \item $\left\{ x \in \mathds{R} : x > 0 \right\}$
+    \item $\left\{ x \in \mathds{N} :
+                     \sqrt{x - 3} \in \mathds{N} \right\}$
+    \item $\left\{ x \in \mathds{R} : -1 \le x \le 1 \right\}$
+    \item $\left\{ x \in \mathds{N} :
+                     \sqrt{x} \in \mathds{N} \right\}$
+  \end{enumerate}
+  Only one of these examples is injective/one-to-one:
+  \begin{enumerate}[(a)]
+    \item One-to-one,
+          since $e^x$ is a strictly increasing monotonic function
+          (i.e., $x > y \implies e^x > e^y$);
+    \item Not one-to-one,
+          since $\forall_{n \in \mathds{N}^*} \; f(-n) = f(n)$;
+    \item Not one-to-one,
+          since $\forall_{k \in \mathds{Z}, x \in \mathds{R}} \;
+                 f(x + k 2 \pi) = f(x)$;
+    \item Not one-to-one,
+          since $\forall_{n \in \mathds{N}^*} \; f(-n) = f(n)$.
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{19}
+  Let $f : A \to B$ and $g : B \to C$ be invertible mappings;
+  that is, mappings such that $f^{-1}$ and $g^{-1}$ exist.
+  Show that $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+  \answer
+  Since $f$ and $g$ are invertible,
+  they're bijective.
+  Then, for all values of $a$,
+  we have a single value $b = f(a)$
+  and a single value $c = g(b)$.
+  Their inverses are $a = f^{-1}(b)$ and $b = g^{-1}(c)$,
+  whereas the composition is:
+  \[(g \circ f)(a) = g(f(a)) = g(b) = c\]
+  Whose inverse is:
+  \[
+    (g \circ f)^{-1}(c)
+    = a
+    = f^{-1}(b)
+    = f^{-1}(g^{-1}(c))
+    = (f^{-1} \circ g^{-1})(c)
+  \]
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{20}
+  \begin{enumerate}[(a)]
+    \item Define a function $f : \mathds{N} \to \mathds{N}$
+          that is one-to-one but not onto.
+    \item Define a function $f : \mathds{N} \to \mathds{N}$
+          that is onto but not one-to-one.
+  \end{enumerate}
+  \answer
+  \begin{enumerate}[(a)]
+    \item $f(n) = n^2$ \\
+      It's one-to-one (a strictly increasing monotonic function),
+      yet not onto (e.g. since $\pm \sqrt{3} \notin \mathds{N}$,
+                         $n = 3$ isn't in the range).
+    \item $f(n) = \lfloor n / 2 \rfloor$ \\
+      It's onto, since we can get every number $k \in \mathds{N}$
+      by applying $n = 2 k$ as the input
+      (i.e., the image and codomain are the same set),
+      but it's not one-to-one (e.g. both inputs $n = 2$ and $n = 3$
+                                    yields $f(n) = 1$).
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{21}
+  Prove the relation defined on $\mathds{R}^2$ by
+  $(x_1, y_1) \sim (x_2, y_2)$ if $x_1^2 + y_1^2 = x_2^2 + y_2^2$
+  is an equivalence relation.
+  \answer
+  To be an equivalence relation, it must be
+  reflexive, symmetric and transitive.
+  Actually, that's pretty straightforward
+  since these are properties of the equalness operator.
+  \begin{itemize}
+    \item $(x, y) \sim (x, y)$ (reflexive) \\
+      Since $x^2 + y^2 = x^2 + y^2$ always holds,
+      it's a reflexive relation.
+    \item $(x_1, y_1) \sim (x_2, y_2) \implies
+           (x_2, y_2) \sim (x_1, y_1)$ (symmetric) \\
+      Given $(x_1, y_1) \sim (x_2, y_2)$,
+      we have $x_1^2 + y_1^2 = x_2^2 + y_2^2$,
+      from which we get $x_2^2 + y_2^2 = x_1^2 + y_1^2$,
+      meaning $(x_2, y_2) \sim (x_1, y_1)$.
+    \item $(x_1, y_1) \sim (x_2, y_2) \land (x_2, y_2) \sim (x_3, y_3)
+           \implies (x_1, y_1) \sim (x_3, y_3)$ (transitive) \\
+      Say $x_1^2 + y_1^2 = z$.
+      From $(x_1, y_1) \sim (x_2, y_2)$,
+      we get $x_1^2 + y_1^2 = x_2^2 + y_2^2$,
+      so $z = x_2^2 + y_2^2$.
+      From $(x_2, y_2) \sim (x_3, y_3)$,
+      we have $x_2^2 + y_2^2 = x_3^2 + y_3^2$,
+      so $z = x_3^2 + y_3^2$.
+      Since $z$ is always the same (a squared radius),
+      we have $x_1^2 + y_1^2 = x_3^2 + y_3^2$,
+      that is, $(x_1, y_1) \sim (x_3, y_3)$.
+  \end{itemize}
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{22}
+  Let $f : A \to B$ and $g : B \to C$ be maps.
+  \begin{enumerate}[(a)]
+    \item If $f$ and $g$ are both one-to-one functions,
+          show that $g \circ f$ is one-to-one.
+    \item If $g \circ f$ is onto, show that $g$ is onto.
+    \item If $g \circ f$ is one-to-one, show that $f$ is one-to-one.
+    \item If $g \circ f$ is one-to-one and $f$ is onto,
+          show that $g$ is one-to-one.
+    \item If $g \circ f$ is onto and $g$ is one-to-one,
+          show that $f$ is onto.
+  \end{enumerate}
+  \answer
+  \begin{enumerate}[(a)]
+    \item
+      Let $(g \circ f)(x) = (g \circ f)(y) = c$
+      for some $x \in A$, $y \in A$ and $c \in C$.
+      That is, $g(f(x)) = g(f(y)) = c$.
+      Since $g$ is one-to-one (injective),
+      $f(x) = f(y) = b$, where $b \in B$.
+      Since $f$ in also one-to-one, it follows that $x = y$,
+      then for each $c$ in the image of $g \circ f$,
+      there's only a single $x \in A$ such that
+      $(g \circ f)(x) = c$.
+      \qed
+    \item
+      Since $g \circ f$ is onto (surjective),
+      there's always an $a \in A$
+      such that $(g \circ f)(a) = c$
+      for any $c \in C$.
+      For a given $a$, let $f(a) = b$,
+      then we can write $c = (g \circ f)(a) = g(f(a)) = g(b)$.
+      That is, for any $c \in C$, there's always a $b \in B$
+      such that $g(b) = c$, namely $b = f(a)$.
+      \qed
+    \item
+      Let $f(x) = f(y) = b$
+      for some $x \in A$, $y \in A$ and $b \in B$,
+      and let $g(b) = c$ for some $c \in C$.
+      Then we can write $g(f(x)) = g(f(y)) = g(b) = c$.
+      That's to say that $(g \circ f)(x) = (g \circ f)(y) = c$,
+      but since $g \circ f$ is one-to-one, we must have $x = y$.
+      Then for each $b$ in the image of $f$,
+      there's only a single $x \in A$ such that $f(x) = b$.
+      \qed
+    \item
+      Suppose $g$ isn't one-to-one, then for some $c \in C$
+      there exists distinct $x \in B$ and $y \in B$
+      such that $g(x) = g(y) = c$.
+      Since $f$ is onto, there's always a $v \in A$ and a $w \in A$
+      such that $f(v) = x$ and $f(w) = y$.
+      However, $(g \circ f)(v) = g(f(v)) = g(x) = c$
+      and $(g \circ f)(w) = g(f(w)) = g(y) = c$,
+      and since $g \circ f$ is one-to-one, $v = w$,
+      which also means that $x = y$, leading to a contradiction.
+      Then our assumption must be false, and $g$ must be one-to-one.
+      \qed
+    \item
+      Suppose $f$ isn't onto,
+      then $\exists_{b \in B} \forall_{a \in A} \; f(a) \ne b$.
+      Let $g(b) = c$ for some $c \in C$.
+      Since $g \circ f$ is onto,
+      $\exists_{a \in A} \; (g \circ f)(a) = c$.
+      However, $g(b) = c = (g \circ f)(a) = g(f(a))$,
+      and since $g$ is one-to-one, we must have $b = f(a)$.
+      Therefore our assumption is false, and $f$ must be onto.
+      \qed
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{23}
+  Define a function on the real numbers by
+  \[f(x) = \frac{x+1}{x-1}\]
+  What are the domain and range of $f$?
+  What is the inverse of $f$?
+  Compute $f \circ f^{-1}$ and $f^{-1} \circ f$.
+  \answer
+  By definition, it's a function on the real numbers,
+  but we can't evaluate this function where the denominator is zero,
+  i.e., the domain is $\mathds{R} \setminus \{1\}$.
+  Let's try to find the $x$ from a given $f(x)$ value,
+  assuming $x \ne 1$:
+  \[\begin{array}{rrcl}
+               & (x - 1) f(x) &=& x + 1 \\
+               & x f(x) - f(x) &=& x + 1 \\
+               & x f(x) - x &=& f(x) + 1 \\
+               & x (f(x) - 1) &=& f(x) + 1 \\
+    \therefore & x &=& \frac{f(x) + 1}{f(x) - 1} \\
+  \end{array}\]
+  In the final part we needed to assume that $f(x) \ne 1$,
+  since there's no $x$ such that $x \cdot 0 = 2$,
+  which means there's no $x$ such that $f(x) = 1$.
+  The codomain is $\mathds{R}$,
+  yet the image/range is $\mathds{R} \setminus \{1\}$.
+  Surprisingly enough, we've found that $f = f^{-1}$.
+  Therefore, $f \circ f^{-1} = f^{-1} \circ f = f \circ f$,
+  and, as expected (assuming $x \ne 1$):
+  \[
+    (f \circ f)(x)
+    = \frac{\frac{x+1}{x-1}+1}{\frac{x+1}{x-1}-1}
+    = \frac{\frac{(x+\cancel{1})+(x-\cancel{1})}{x-1}}
+           {\frac{(\cancel{x}+1)-(\cancel{x}-1)}{x-1}}
+    = \frac{\frac{2 x}{x-1}}{\frac{2}{x-1}}
+    = \frac{\cancel{2} x}{\cancel{x-1}}
+      \frac{\cancel{x-1}}{\cancel{2}}
+    = x
+  \]
+\end{exercise}
+
+
+\begin{exercise}{24}
+  Let $f : X \to Y$ be a map
+  with $A_1, A_2 \subset X$ and $B_1, B_2 \subset Y$.
+  \begin{enumerate}[(a)]
+    \item Prove $f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$.
+    \item Prove $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$.
+          Give an example in which equality fails.
+    \item Prove $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$,
+          where \[f^{-1}(B) = \left\{ x \in X : f(x) \in B \right\}.\]
+    \item Prove $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$.
+    \item Prove $f^{-1}(Y \setminus B_1) = X \setminus f^{-1}(B_1)$.
+  \end{enumerate}
+  \answer
+  \begin{enumerate}[(a)]
+
+    \item
+      \[\begin{array}{rcl}
+        f(A_1 \cup A_2)
+        &=& \left\{ f(a) : a \in A_1 \cup A_2 \right\} \\
+        &=& \left\{ f(a) : a \in \left\{ x : x \in A_1 \lor x \in A_2
+                                 \right\}
+            \right\} \\
+        &=& \left\{ f(a) : a \in A_1 \lor a \in A_2 \right\} \\
+        &=& \left\{ f(a) : a \in A_1 \right\} \cup
+            \left\{ f(a) : a \in A_2 \right\} \\
+        &=& f(A_1) \cup f(A_2)
+      \end{array}\]
+      We can always split the comprehension
+      on the ``$\lor$'' operator
+      as the union of two sets
+      because the constraints are independent.
+      \qed
+      The same can been proven
+      by splitting the equalness in two parts
+      (the former being both a subset and a superset of the latter)
+      and proving them separately:
+      \begin{itemize}
+        \item
+          For all $b_1 \in f(A_1)$,
+          we have some $a_1 \in A_1$
+          such that $b_1 = f(a_1)$.
+          But we can increase the set
+          and say that $a_1 \in A_1 \cup A_2$,
+          which means that $f(a_1) \in f(A_1 \cup A_2)$.
+          Therefore, $f(A_1) \subset f(A_1 \cup A_2)$.
+          Likewise, $f(A_2) \subset f(A_1 \cup A_2)$,
+          so $f(A_1) \cup f(A_2) \subset f(A_1 \cup A_2)$.
+        \item
+          On the other hand, let $b \in f(A_1 \cup A_2)$,
+          then $b = f(a)$ for some $a \in A_1 \cup A_2$.
+          Either $a \in A_1$ or $a \notin A_1$.
+          If $a \in A_1$, then $f(a) \in f(A_1)$,
+          else $a \in A_2$ because it's in the union of these sets,
+          but in this case $f(a) \in f(A_2)$.
+          That is, $f(a) \in f(A_1) \lor f(a) \in f(A_2)$,
+          which can be written as $f(a) \in f(A_1) \cup f(A_2)$,
+          or simply as $f(A_1 \cup A_2) \subset f(A_1) \cup f(A_2)$.
+      \end{itemize}
+      \qed
+
+    \item
+      Let $b \in f(A_1 \cap A_2)$,
+      then $\exists_{a \in A_1 \cap A_2} \; f(a) = b$.
+      From the definition of intersection,
+      we know that $a \in A_1$, and that $a \in A_2$.
+      Therefore, $f(a) \in f(A_1)$ and $f(a) \in f(A_2)$,
+      yielding $b \in f(A_1) \land b \in f(A_2)$,
+      that is, $b \in f(A_1) \cap f(A_2)$.
+      Since that's the same for any such $b$,
+      we've found that $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$.
+      \qed
+      As an example where the reverse doesn't hold,
+      let $A_1 = \{0, 1, 2\}$, $A_2 = \{0, -1, -2\}$
+      and $f(a) = a^2$.
+      Then $f(A_1) = \{0, 1, 4\} = f(A_2) = f(A_1) \cap f(A_2)$.
+      However, $A_1 \cap A_2 = \{0\}$, then $f(A_1 \cap A_2) = \{0\}$.
+      As expected, $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$,
+      but in this case
+      $f(A_1 \cap A_2) \not\supset f(A_1) \cap f(A_2)$.
+
+    \item
+      By splitting the set comprehension
+      by its [independent] disjunction terms:
+      \[\begin{array}{rcl}
+        f^{-1}(B_1 \cup B_2)
+        &=& \left\{ a : f(a) \in B_1 \cup B_2 \right\} \\
+        &=& \left\{ a : f(a) \in \left\{ x : x \in B_1 \lor x \in B_2
+                                 \right\}
+            \right\} \\
+        &=& \left\{ a : f(a) \in B_1 \lor f(a) \in B_2 \right\} \\
+        &=& \left\{ a : f(a) \in B_1 \right\} \cup
+            \left\{ a : f(a) \in B_2 \right\} \\
+        &=& f^{-1}(B_1) \cup f^{-1}(B_2)
+      \end{array}\]
+      \qed
+      Or by splitting the equalness in two parts:
+      \begin{itemize}
+        \item
+          For all $a_1 \in f^{-1}(B_1)$,
+          we have some $f(a_1) \in B_1$.
+          But we can increase the latter set
+          and say that $f(a_1) \in B_1 \cup B_2$,
+          which means that $a_1 \in f^{-1}(B_1 \cup B_2)$.
+          Therefore, $f^{-1}(B_1) \subset f^{-1}(B_1 \cup B_2)$.
+          Likewise, $f^{-1}(B_2) \subset f^{-1}(B_1 \cup B_2)$, so
+          $f^{-1}(B_1) \cup f^{-1}(B_2) \subset f^{-1}(B_1 \cup B_2)$.
+        \item
+          Let $a \in f^{-1}(B_1 \cup B_2)$,
+          then there is some $f(a) \in B_1 \cup B_2$.
+          Either $f(a) \in B_1$ or $f(a) \notin B_1$.
+          If $f(a) \in B_1$, then $a \in f^{-1}(B_1)$,
+          else $f(a) \in B_2$ since it's in the union of these sets,
+          but in this case $a \in f^{-1}(B_2)$.
+          That is, $a \in f^{-1}(B_1) \lor a \in f^{-1}(B_2)$,
+          which can be written as $a \in f^{-1}(B_1) \cup f^{-1}(B_2)$.
+          Finally, we can say that
+          $f^{-1}(B_1 \cup B_2) \subset f^{-1}(B_1) \cup f^{-1}(B_2)$.
+      \end{itemize}
+      \qed
+
+    \item
+      Splitting the equalness:
+      \begin{itemize}
+        \item $f^{-1}(B_1 \cap B_2) \subset
+               f^{-1}(B_1) \cap f^{-1}(B_2)$ \\
+          Let $a \in f^{-1}(B_1 \cap B_2)$.
+          From the definition of $f^{-1}$ applied on a set,
+          it's clear that $f(a) \in B_1 \cap B_2$,
+          which can be split as $f(a) \in B_1$ and $f(a) \in B_2$.
+          Therefore, $a \in f^{-1}(B_1)$ and $a \in f^{-1}(B_2)$,
+          which can be joined as
+          $a \in f^{-1}(B_1) \cap f^{-1}(B_2)$.
+        \item $f^{-1}(B_1 \cap B_2) \supset
+               f^{-1}(B_1) \cap f^{-1}(B_2)$ \\
+          Let $a \in f^{-1}(B_1) \cap f^{-1}(B_2)$.
+          Then we can say that
+          $a \in f^{-1}(B_1)$ and $a \in f^{-1}(B_2)$,
+          which means that
+          $f(a) \in B_1$ and $f(a) \in B_2$.
+          Therefore, $f(a) \in B_1 \cap B_2$,
+          which means that $a \in f^{-1}(B_1 \cap B_2)$.
+      \end{itemize}
+      \qed
+      In this case, as an easier proof,
+      we could have splitten the set comprehension in its conjunction,
+      since it becomes the definition of an intersection of sets:
+      \[\begin{array}{rcl}
+        f^{-1}(B_1 \cap B_2)
+        &=& \left\{ a : f(a) \in B_1 \cap B_2 \right\} \\
+        &=& \left\{ a : f(a) \in \left\{ x : x \in B_1 \land x \in B_2
+                                 \right\}
+            \right\} \\
+        &=& \left\{ a : f(a) \in B_1 \land f(a) \in B_2 \right\} \\
+        &=& \left\{ a : a \in f^{-1}(B_1) \land
+                        a \in f^{-1}(B_2) \right\} \\
+        &=& f^{-1}(B_1) \cap f^{-1}(B_2)
+      \end{array}\]
+      \qed
+
+    \item
+      Since $Y$ is the codomain of $f$, $f(a) \in Y$ always holds.
+      Likewise, since $X$ is the domain, we always have $a \in X$.
+      From the straight application
+      of the definition of $f$ and $f^{-1}$ on sets,
+      we know that $f(X) \subset Y$ (the range is in the codomain),
+      yet $f^{-1}(Y) = \left\{ a \in X : f(a) \in Y \right\} = X$
+      since the predicate is always true.
+      \[\begin{array}{rcl}
+        f^{-1}(Y \setminus B_1)
+        &=& \left\{ a : f(a) \in Y \setminus B_1 \right\} \\
+        &=& \left\{ a : f(a) \in \left\{ x : x \in Y \land x \notin B_1
+                                 \right\}
+            \right\} \\
+        &=& \left\{ a : f(a) \in Y \land
+                        f(a) \notin B_1 \right\} \\
+        &=& \left\{ a : f(a) \in Y \land
+                        \lnot f(a) \in B_1 \right\} \\
+        &=& \left\{ a : a \in f^{-1}(Y) \land
+                        \lnot a \in f^{-1}(B_1) \right\} \\
+        &=& \left\{ a : a \in X \land
+                        a \notin f^{-1}(B_1) \right\} \\
+        &=& X \setminus f^{-1}(B_1)
+      \end{array}\]
+      \qed
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{25}
+  Determine whether or not
+  the following relations are equivalence relations
+  on the given set.
+  If the relation is an equivalence relation,
+  describe the partition given by it.
+  If the relation is not an equivalence relation,
+  state why it fails to be one.
+  \begin{enumerate}[(a)]
+    \item $x \sim y$ in $\mathds{R}$ if $x \ge y$
+    \item $m \sim n$ in $\mathds{Z}$ if $m n = 0$
+    \item $x \sim y$ in $\mathds{R}$ if $|x - y| \le 4$
+    \item $m \sim n$ in $\mathds{Z}$
+          if $m \equiv n \;\; (\operatorname{mod} 6)$
+  \end{enumerate}
+\end{exercise}
+
+
+\end{document}
