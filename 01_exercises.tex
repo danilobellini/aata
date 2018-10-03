@@ -29,6 +29,9 @@
 
 }
 
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
+
+
 \begin{document}
 
 \begin{center}
@@ -996,6 +999,388 @@
     \item $m \sim n$ in $\mathds{Z}$
           if $m \equiv n \;\; (\operatorname{mod} 6)$
   \end{enumerate}
+  \answer
+  \begin{enumerate}[(a)]
+
+    \item
+      It fails to be an equivalence relation
+      because it lacks symmetry.
+      Let $x = 1$ and $y = 0$.
+      Since $x \ge y$, we know $x \sim y$,
+      but $y < x$,
+      which can be written\footnote{
+        The $\not \ge$ is just a notation for
+        \emph{neither greater nor equal}.
+      }
+      as $y \not \ge x$,
+      so we can't say $y \sim x$.
+
+    \item
+      It fails to be an equivalence relation
+      because it lacks transitivity.
+      Let $a = 2$, $b = 0$ and $c = 1$.
+      Since $a b = 0$, $a \sim b$.
+      Likewise, $b c = 0$, then $b \sim c$.
+      However, $a c = 2$, so we can't say $a \sim c$.
+
+    \item
+      It fails to be an equivalence relation
+      because it lacks transitivity.
+      Let $a = 0$, $b = 3$ and $c = 7$,
+      then $a \sim b$ since $|a - b| = 3 \le 4$,
+      and $b \sim c$ since $|b - c| = 4 \le 4$.
+      But we can't say $a \sim c$ because $|a - c| = 7 > 4$.
+
+    \item
+      We know that, in modulo $6$, $m \equiv n$ means
+      that $\exists_{k \in \mathds{Z}} \; m = n + 6 k$.
+      That gives us:
+      \begin{itemize}
+        \item \emph{(Reflexive)}
+          Say $m = m + 6 k$, then we have $k = 0$, an integer number.
+          Therefore, $m \equiv m \;\; (\operatorname{mod} 6)$,
+          and $m \sim m$;
+        \item \emph{(Symmetric)}
+          Let $m \equiv n \;\; (\operatorname{mod} 6)$.
+          Then we know that $m = n + 6 k$,
+          which can be also written as $n = m + 6 (-k)$.
+          Since $k \in \mathds{Z}$,
+          we also know that $-k \in \mathds{Z}$,
+          then $n \equiv m \;\; (\operatorname{mod} 6)$,
+          and $m \sim n \iff n \sim m$;
+        \item \emph{(Transitive)}
+          Let $a \equiv b \;\; (\operatorname{mod} 6)$
+          and $b \equiv c \;\; (\operatorname{mod} 6)$.
+          Then $a = b + 6 k_1$
+          and $b = c + 6 k_2$.
+          Replacing the latter in the former,
+          we get $a = c + 6 k_2 + 6 k_1 = c + 6 (k_1 + k_2)$.
+          The sum of integer numbers is integer,
+          so $a = c + 6 k$
+          for $k = k_1 + k_2$, $k \in \mathds{Z}$.
+          Finally, $a \equiv c \;\; (\operatorname{mod} 6)$,
+          and $a \sim b \land b \sim c \implies a \sim c$.
+      \end{itemize}
+      The resulting partitions are
+      the six equivalence classes of integer numbers
+      that happens to have the same remainder on the division by $6$.
+      All integer numbers can be written in the $6 x + w$ format,
+      $x \in \mathds{Z}$, $w \in \{0, 1, 2, 3, 4, 5\}$,
+      that's like writing the number in base/radix $6$\footnote{
+        Actually, that's a result of the unique division theorem,
+        seen in the next chapter in ``The Division Algorithm''
+        section.
+      }.
+      There's a partition for each distinct $w$ value.
+      For a proof of this partitioning system,
+      let $a = 6 x_a + w_a$ and $b = 6 x_b + w_b$.
+      We can express $a \equiv b \;\; (\operatorname{mod} 6)$
+      as $a = b + 6 k$,
+      giving us $6 x_a + w_a = 6 x_b + w_b + 6 k$,
+      or simply $x_a - x_b - k = \left. (w_b - w_a) \right/ 6$.
+      The left hand side is the sum of integers,
+      so these two questions becomes the same:
+      ``is $a \sim b$?'' and
+      ``is $\left. (w_b - w_a) \right/ 6$ an integer number?''.
+      Since $(w_b - w_a) \in \{-5, -4, \cdots, 4, 5\}$,
+      that subtraction is divisible by $6$ only when $w_b = w_a$.
+      Therefore, the numbers are in the same partition
+      only if they share the same $w$ value
+      (the remainder of the division by $6$).
+
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}{26}
+  Define a relation $\sim$ on $\mathds{R}^2$
+  by stating that $(a, b) \sim (c, d)$
+  if and only if $a^2 + b^2 \le c^2 + d^2$.
+  Show that $\sim$ is reflexive and transitive but not symmetric.
+  \answer
+  \begin{itemize}
+    \item \emph{(Reflexive)}
+      Since $a^2 + b^2 = a^2 + b^2$,
+      we can write $a^2 + b^2 \le a^2 + b^2$,
+      meaning $(a, b) \sim (a, b)$;
+    \item \emph{(Transitive)}
+      Let $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f)$.
+      Then $a^2 + b^2 \le c^2 + d^2$
+      and $c^2 + d^2 \le e^2 + f^2$.
+      The transitivity of the $\le$ operator
+      allows us to join these inequations,
+      giving $a^2 + b^2 \le e^2 + f^2$,
+      that is, $(a, b) \sim (e, f)$;
+    \item \emph{(Symmetric)}
+      Let $(a, b) = (1, 2)$ and $(c, d) = (3, 4)$.
+      That gives us $a^2 + b^2 = 1 + 4 = 5$,
+      and $c^2 + d^2 = 9 + 16 = 25$.
+      Since $5 \le 25$, we can say $a^2 + b^2 \le c^2 + d^2$,
+      meaning $(a, b) \sim (c, d)$.
+      However, $(c, d) \sim (a, b)$ would imply
+      $c^2 + d^2 \le a^2 + b^2$,
+      or $25 \le 5$ in this example,
+      a contradiction.
+      Therefore, this relation isn't symmetric
+      and can't be said an equivalence relation.
+  \end{itemize}
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{27}
+  Show that an $m \times n$ matrix
+  gives rise to a well-defined map
+  from $\mathds{R}^n$ to $\mathds{R}^m$.
+  \answer
+  Let $A \subset \mathds{R}^m$
+  be a finite set whose cardinality is equal to $n$.
+  For indexing convenience,
+  the vectors in $A$ are ordered in a sequence like
+  $A = \{\mathbf{a}_1, \mathbf{a}_2, \cdots, \mathbf{a}_n\}$.
+  Using such set, we can define a simple well-defined map
+  from $\mathds{R}^n$ to $\mathds{R}^m$
+  (i.e., a relation that maps each vector from $\mathds{R}^n$
+         to one single determined value of $\mathds{R}^m$):
+  the linear combination of the vectors from $A$
+  whose coefficients are the coordinates of the input vector.
+  That is, our well-defined mapping
+  $\mathbf{m} : \mathds{R}^n \to \mathds{R}^m$
+  is defined for any $\mathbf{x} \in \mathds{R}^n$ as:
+  \[
+    \mathbf{m}(\mathbf{x}) = \sum_{j = 1}^n x_j \mathbf{a}_j
+  \]
+  The $i$-th element of the resulting vector is, therefore:
+  \[
+    m_i(\mathbf{x})
+      = \left[ \mathbf{m}(\mathbf{x}) \right]_i
+      = \left[ \sum_{j = 1}^n x_j \mathbf{a}_j \right]_i
+      = \sum_{j = 1}^n x_j [\mathbf{a}_j]_i
+  \]
+  Where the $[\mathbf{a}_j]_i$
+  is the $i$-th element of the $j$-th vector from $A$.
+  Let $\mathbf{A}$ be the $m \times n$ matrix
+  where $[\mathbf{A}]_{i,j} = [\mathbf{a}_j]_i$, that is,
+  the matrix whose $j$-th column
+  have the coordinates of $\mathbf{a}_j$.
+  Then we can write the previous result as a matrix multiplication,
+  if we work with $\mathbf{x}$ as a column matrix:
+  \[
+    m_i(\mathbf{x})
+      = \sum_{j = 1}^n x_j [\mathbf{A}]_{i, j}
+      = \sum_{j = 1}^n [\mathbf{A}]_{i, j} [\mathbf{x}]_{j, 1}
+      = [\mathbf{A} \mathbf{x}]_{i, 1}
+  \]
+  If we also interpret the vectors from $\mathds{R}^m$
+  (our codomain and range/image)
+  as column matrices,
+  our mapping can be written as
+  a matrix multiplication:
+  \[
+    \mathbf{m}(\mathbf{x}) = \mathbf{A} \mathbf{x}
+  \]
+  In other words,
+  any $m \times n$ matrix $\mathbf{A}$
+  gives rise to a well-defined map
+  from $\mathds{R}^n$ to $\mathds{R}^m$:
+  the linear combination of its columns
+  weighted by the input coordinates.
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{28}
+  Find the error in the following argument
+  by providing a counterexample.
+  ``The reflexive property is redundant in the axioms
+    for an equivalence relation.
+    If $x \sim y$, then $y \sim x$ by the symmetric property.
+    Using the transitive property, we can deduce that $x \sim x$.''
+  \answer
+  The reflexive property should be valid for all $x \in X$,
+  not just for the ``equivalence classes''
+  with more than a single element.
+  That is, all elements in X should belong to an equivalence class,
+  yet the lack of a reflexive property violates that.
+  For example, let $X = {x \in \mathds{N} : x \le 20}$,
+  and let $x \sim y$ mean
+  that either $x / y$ or $y / x$ is a power of $2$,
+  as long as $x \ne y$ or $\exists_{z \ne x} \; z \sim x$.
+  The equivalence classes for this rule are:
+  \begin{itemize}
+    \item $\{1, 2, 4, 8, 16\}$
+    \item $\{3, 6, 12\}$
+    \item $\{5, 10, 20\}$
+    \item $\{7, 14\}$
+    \item $\{9, 18\}$
+  \end{itemize}
+  The symmetric property had been enforced within the definition,
+  where both $x / y$ and $y / x$  are evaluated
+  (actually, that just mean that $x / y = 2^k$
+   for some $k \in \mathds{Z}$,
+   so $y / x = 2^{-k}$, and since $-k \in \mathds{Z}$,
+   the symmetric property can be seen
+   as following from fractional powers of $2$).
+  The transitive property applies
+  because if $a / b = 2^{k_1}$ and $b / c = 2^{k_2}$
+  for some integers $k_1$ and $k_2$,
+  then $a / c = (a / b) (b / c) = 2^{k_1} 2^{k_2} = 2^{k_1 + k_2}$,
+  so it's still a power of two.
+  The constraint regarding the equivalence class,
+  $\exists_{z \ne x} \; z \sim x$,
+  is the one that removes the reflexive property
+  from some elements
+  while keeping the symmetric and transitive properties.
+  The elements from $\{11, 13, 15, 17, 19\} \subset X$ are missing
+  in the above classes
+  because we've enforced that each equivalence class
+  must have at least $2$ members.
+  We can't say $11 \sim 11$ in this context,
+  so $\sim$ isn't an equivalence relation of $X$,
+  as the reflexive property doesn't apply.
+  \qed
+\end{exercise}
+
+
+\begin{exercise}{29}
+  (\emph{Projective Real Line})
+  Define a relation on $\mathds{R}^2 \setminus \{(0, 0)\}$
+  by letting $(x_1, y_1) \sim (x_2, y_2)$
+  if there exists a nonzero real number $\lambda$
+  such that $(x_1, y_1) = (\lambda x_2, \lambda y_2)$.
+  Prove that $\sim$ defines an equivalence relation
+  on $\mathds{R}^2 \setminus (0, 0)$.
+  What are the corresponding equivalence classes?
+  This equivalence relation defines the projective line,
+  denoted by $\mathds{P}(\mathds{R})$,
+  which is very important in geometry.
+  \answer
+  \begin{itemize}
+    \item \emph{(Reflexive)}
+      For $\lambda = 1$
+      we have $(x_1, y_1) = (\lambda x_1, \lambda y_1)$,
+      meaning $(x_1, y_1) \sim (x_1, y_1)$;
+    \item \emph{(Symmetric)}
+      Let $(x_1, y_1) \sim (x_2, y_2)$,
+      then $\exists_{\lambda \in \mathds{R} \setminus \{0\}} \;
+            (x_1, y_1) = (\lambda x_2, \lambda y_2)$.
+      Since $\lambda \ne 0$, we can divide everything by $\lambda$.
+      Thus $(x_2, y_2) = \left( \frac{1}{\lambda} x_1,
+                                \frac{1}{\lambda} y_1 \right)$,
+      meaning $(x_2, y_2) \sim (x_1, y_1)$;
+    \item \emph{(Transitive)}
+      Let $(x_1, y_1) \sim (x_2, y_2)$
+      and $(x_2, y_2) \sim (x_3, y_3)$.
+      Then $\exists_{\lambda_1 \in \mathds{R} \setminus \{0\}} \;
+            (x_1, y_1) = (\lambda_1 x_2, \lambda_1 y_2)$
+      and $\exists_{\lambda_2 \in \mathds{R} \setminus \{0\}} \;
+           (x_2, y_2) = (\lambda_2 x_3, \lambda_2 y_3)$.
+      We can join these to obtain
+      $
+        (x_1, y_1) = \lambda_1 (x_2, y_2)
+                   = \lambda_1 (\lambda_2 x_3, \lambda_2 y_3)
+                   = (\lambda_1 \lambda_2 x_3, \lambda_1 \lambda_2 y_3)
+                   = (\lambda x_3, \lambda y_3)
+      $,
+      where $\lambda = \lambda_1 \lambda_2 \ne 0$
+      since neither terms are zero.
+      Therefore $(x_1, y_1) \sim (x_3, y_3)$.
+  \end{itemize}
+  \qed
+  The equivalence classes are the distinct lines
+  of the $\mathds{R}^2$ plane
+  that would include the origin $(0, 0)$
+  if it were in the domain.
+  Removing the crossing point is enough
+  to make the ``punctured lines'' disjoint.
+  A line can be defined by two points $P$ and $Q$,
+  it can be regarded as every point
+  $P + \lambda \mathbf{v} \in \mathds{R}^2$,
+  where $\lambda \in \mathds{R}$
+  and $\mathbf{v} = Q - P$.
+  With $P = (0, 0)$ we get the line $\lambda \mathbf{v}$,
+  which passes through the origin;
+  to remove the origin, it suffices to enforce that $\lambda \ne 0$
+  in the line equation.
+
+  As a more detailed explanation,
+  all values $(x, y) = (\cos \theta, \sin \theta)$
+  for $\theta \in \{t \in R : 0 \le t < \pi \}$
+  belongs to a distinct equivalence class,
+  and these are all the equivalence classes there are
+  for the given domain.
+  To prove these are not equivalent,
+  let's assume $\theta_0 \ne \theta_1$, both in that domain.
+  We know $(\cos \theta_0, \sin \theta_0)$
+  and $(\cos \theta_1, \sin \theta_1)$
+  are equivalent if and only if
+  $(\cos \theta_0, \sin \theta_0) =
+   (\lambda \cos \theta_1, \lambda \sin \theta_1)$.
+  The norm of the left hand side is
+  $\sqrt{(\cos \theta_0)^2 + (\sin \theta_0)^2} = \sqrt{1} = 1$,
+  whereas the norm of the right hand side is
+  $\sqrt{(\lambda \cos \theta_1)^2 + (\lambda \sin \theta_1)^2} =
+   \sqrt{\lambda^2 \left[ (\cos \theta_1)^2 +
+                          (\sin \theta_1)^2 \right] } =
+   \sqrt{\lambda^2} = |\lambda|$,
+  so we've found that $\lambda = \pm 1$.
+  As the sign of the second coordinate is never negative
+  (since $\forall_{\theta \in [0, \pi)} \; \sin \theta \ge 0$),
+  we know that $\lambda = 1$
+  in order to keep the sign always positive.
+  Thus $(\cos \theta_0, \sin \theta_0) =
+        (\cos \theta_1, \sin \theta_1)$,
+  and since the cosine function is one-to-one in the $[0, \pi)$ domain,
+  we've found that $\theta_0 = \theta_1$.
+  That's a contradiction,
+  hence every $(x, y) = (\cos \theta, \sin \theta)$
+  are in a distinct equivalence class
+  in that domain for $\theta$.
+  On the other hand,
+  every point $(x, y) \in \mathds{R}^2 \setminus \{(0, 0)\}$
+  can be written in polar coordinates as
+  $(x, y) = (r \cos \phi, r \sin \phi)$, where
+  $\phi = \operatorname{atan2}(y, x) = \operatorname{Arg}(x + i y)$
+  and $r = \sqrt{x^2 + y^2} > 0$,
+  with $\phi \in [-\pi, \pi)$\footnote{
+    Actually, $(-\pi, \pi]$ is the most common range
+    for the complex argument ($2$-argument arctangent),
+    yet $-\pi$ and $\pi$ are the same angle,
+    so this change have no loss.
+  }.
+  Therefore:
+  \[
+    (x, y) = r \left( \cos \phi, \sin \phi \right) =
+    \begin{cases}
+       -r \left(-\cos \phi,
+                -\sin \phi \right)
+       & \text{if} \; \phi < 0 \\
+       r \left( \cos \phi,
+                \sin \phi \right)
+       & \text{otherwise} \\
+    \end{cases}
+  \]
+  Since $\cos(\phi + \pi) = -\cos(\phi)$
+  and $\sin(\phi + \pi) = -\sin(\phi)$,
+  we can write:
+  \[
+    (x, y) =
+    \begin{cases}
+       -r \left(\cos(\phi + \pi),
+                \sin(\phi + \pi) \right)
+       & \text{if} \; \phi < 0 \\
+       r \left( \cos \phi,
+                \sin \phi \right)
+       & \text{otherwise} \\
+    \end{cases}
+  \]
+  Which are always $(x, y) = \lambda (\cos \theta, \sin \theta)$
+  for some $\theta \in [0, \pi)$
+  and some $\lambda \ne 0$,
+  that is, the classes of equivalence
+  of our previously chosen set
+  span the entire domain.
+  \qed
 \end{exercise}
 
 
